@@ -1,0 +1,14 @@
+namespace Payne.Areas.Manage.ViewModels.Product;
+
+public class CreateProductVm
+{
+    public string Name { get; set; }
+    public int Weight { get; set; }
+    public int Dimension { get; set; }
+    public string Description { get; set; }
+    public int Price { get; set; }
+    public string SKU { get; set; }
+    public List<int>? TagIds { get; set; }
+    public IFormFile Photo { get; set; }
+    public List<IFormFile> Images { get; set; }
+}

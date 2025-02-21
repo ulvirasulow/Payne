@@ -1,0 +1,43 @@
+@model List<Payne.ViewModels.Basket.CartVm>
+@{
+    int TotalPrice = 0;
+}
+<aside class="mini-cart" id="miniCart">
+    <div class="mini-cart-wrapper">
+        <div class="mini-cart__close">
+            <a href="#" class="btn-close"><i class="flaticon-cross"></i></a>
+        </div>
+        <div class="mini-cart-inner">
+            <h3 class="mini-cart__heading mb--45">Shopping Cart</h3>
+            <div class="mini-cart__content">
+                <ul class="mini-cart__list">
+                    @foreach (var item in Model)
+                    {
+                        TotalPrice += item.Count * item.Price;
+                        <li class="mini-cart__product">
+                            <a asp-action="Index" asp-controller="Home" class="mini-cart__product-remove">
+                            </a>
+                            <div class="mini-cart__product-image">
+                                <img src="~/Upload/Product/@item.ImgUrl" alt="products">
+                            </div>
+                            <div class="mini-cart__product-content">
+                                <a class="mini-cart__product-title" asp-action="Detail" asp-controller="Home"
+                                   asp-route-id="@item.Id">@item.Name</a>
+                                <span class="mini-cart__product-quantity">@item.Count x $@item.Price</span>
+                            </div>
+                        </li>
+                    }
+                </ul>
+                <div class="mini-cart__total">
+                    <span>Subtotal</span>
+                    <span class="ammount">$@TotalPrice</span>
+                </div>
+                <div class="mini-cart__buttons">
+                    <a asp-action="Index" asp-controller="Cart" class="btn btn-fullwidth btn-bg-primary mb--20">View
+                        Cart</a>
+                    <a href="checkout.html" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>

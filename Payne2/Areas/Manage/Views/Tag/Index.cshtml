@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<Payne.Models.Tags>
+@{
+    int count = 0;
+}
+<div class="container">
+    <h1>Tags</h1>
+    <a class="btn btn-primary" asp-action="Create">Create</a>
+    <h1></h1>
+    <table class="table table-striped table-dark">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Product Count</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <th scope="row">@count</th>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.TagProducts.Count</td>
+                <td>
+                    <a class="btn btn-secondary" asp-action="Update" asp-route-id=@item.Id>Update</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

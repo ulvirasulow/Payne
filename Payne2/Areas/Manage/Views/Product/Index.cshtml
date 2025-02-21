@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<Payne.Models.Product>
+@{
+    int count = 0;
+}
+<div class="container">
+    <h1>Products</h1>
+    @if (TempData["error"] != null)
+    {
+        @foreach (var item in (TempData["error"] as string[]))
+        {
+            <span class="text-danger">@item</span>
+        }
+    }
+
+    <a class="btn btn-primary" asp-action="Create">Create</a>
+    <h1></h1>
+    <table class="table table-striped table-dark">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Tags</th>
+            <th scope="col">Image</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <th scope="row">@count</th>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>
+                    @foreach (var tag in item.TagProducts)
+                    {
+                        @tag.Tag.Name
+                    }
+                </td>
+                <td>
+                    @{
+                        var primaryImage = item.ProductImages.FirstOrDefault(x => x.Primary);
+                    }
+                    <img class="default-img" src="~/Upload/Product/@primaryImage.ImgUrl" alt=""
+                         style="width: 100px; height: auto;">
+                </td>
+                <td>
+                    <a class="btn btn-secondary" asp-action="Update" asp-route-id=@item.Id>Update</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

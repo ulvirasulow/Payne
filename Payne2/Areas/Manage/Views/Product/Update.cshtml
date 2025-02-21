@@ -1,0 +1,61 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Payne.Areas.Manage.ViewModels.Product.UpdateProductVm
+
+<div class="container">
+    <form method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="Name">Name</label>
+                <input class="form-control" asp-for="Name" placeholder="Enter Name">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Price">Price</label>
+                <input class="form-control" asp-for="Price" placeholder="Enter Price">
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Dimension">Dimension</label>
+                <input class="form-control" asp-for="Dimension" placeholder="Enter Dimension">
+                <span asp-validation-for="Dimension" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Weight">Weight</label>
+                <input class="form-control" asp-for="Weight" placeholder="Enter Weight">
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="SKU">SKU</label>
+                <input class="form-control" asp-for="SKU" placeholder="Enter SKU">
+                <span asp-validation-for="SKU" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Description">Description</label>
+                <textarea class="form-control" asp-for="Description" rows="3" placeholder="Enter Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="TagIds">Tags</label>
+                <select class="form-control" asp-for="TagIds" asp-items="@(new SelectList(ViewBag.Tags, "Id", "Name"))" multiple></select>
+                <span asp-validation-for="TagIds" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="Photo">Main Photo</label>
+                <input type="file" class="form-control" asp-for="Photo">
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Images">Additional Images</label>
+                <input type="file" class="form-control" asp-for="Images" multiple>
+                <span asp-validation-for="Images" class="text-danger"></span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+</div>
