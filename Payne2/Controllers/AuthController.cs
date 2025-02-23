@@ -74,13 +74,12 @@ public class AuthController : Controller
             {
                 ModelState.AddModelError("", item.Description);
             }
-
             return View();
         }
 
         return RedirectToAction("Login");
     }
-
+    
     public async Task<IActionResult> Logout()
     {
         await _signInManager.SignOutAsync();

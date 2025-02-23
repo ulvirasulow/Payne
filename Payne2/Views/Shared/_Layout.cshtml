@@ -157,9 +157,7 @@
                                         <span class="mini-cart-btn__icon">
                                             <i class="flaticon-bag"></i>
                                         </span>
-                                    <sup class="mini-cart-btn__count">
-                                        02
-                                    </sup>
+                                    <span class="mini-cart-btn__count basket-quantity">0</span>
                                 </a>
                             </div>
                         </div>
@@ -791,6 +789,7 @@
                 body: JSON.stringify(productId)
             })
             await refreshBasket()
+            await updateBasketCount()
         } catch {
         }
     }
@@ -804,8 +803,40 @@
         } else {
             console.log("lenete gelmis javascript")
         }
-
     }
+
+    async function updateBasketCount() {
+        var response = await fetch('Cart/GetBasketCount/')
+        if (response.ok) {
+            var data = await response.json();
+            console.log(data)
+            document.querySelectorAll('.basket-quantity')
+                .forEach(x => {
+                    x.innerHTML = data
+                })
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        updateBasketCount()
+    })
+
+    async function FilterSearchTerm(search) {
+        var response = await fetch(`/Shop/Filter?search=${search}`);
+        if (response.ok) {
+            var data = await response.text();
+            document.getElementById('filter-result').innerHTML = data;
+        }
+    }
+
+    var form = document.querySelector('.custom-search');
+    var search = document.getElementById('searchValue')
+    
+    search.addEventListener("keyup", async function (e) {
+        var search = document.getElementById('searchValue').value
+        console.log(search)
+        await FilterSearchTerm(search);
+    })
 
 </script>
 </body>

@@ -117,4 +117,15 @@ public class CartController : Controller
     {
         return ViewComponent("Basket");
     }
+
+    public IActionResult GetBasketCount()
+    {
+        List<CookieItemVm> cookies = String.IsNullOrEmpty(Request.Cookies["basket"])
+            ? new List<CookieItemVm>()
+            : JsonConvert.DeserializeObject<List<CookieItemVm>>(Request.Cookies["basket"]);
+
+        int count = cookies.Count == 0 ? 0 : cookies.Sum(x => x.Count);
+
+        return Ok(count);
+    }
 }

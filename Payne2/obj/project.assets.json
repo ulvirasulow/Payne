@@ -2621,11 +2621,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ulvirasulow/RiderProjects/Payne2/Payne2/Payne2.csproj",
+      "projectUniqueName": "/home/ulvirasulow/Desktop/Payne/Payne2/Payne2.csproj",
       "projectName": "Payne2",
-      "projectPath": "/home/ulvirasulow/RiderProjects/Payne2/Payne2/Payne2.csproj",
+      "projectPath": "/home/ulvirasulow/Desktop/Payne/Payne2/Payne2.csproj",
       "packagesPath": "/home/ulvirasulow/.nuget/packages/",
-      "outputPath": "/home/ulvirasulow/RiderProjects/Payne2/Payne2/obj/",
+      "outputPath": "/home/ulvirasulow/Desktop/Payne/Payne2/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ulvirasulow/.nuget/NuGet/NuGet.Config"
@@ -2646,11 +2646,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2713,7 +2708,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/ulvirasulow/.dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.112/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

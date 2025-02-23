@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Payne.DAL.Context;
+using Payne.Models;
 
 namespace Payne.Controllers;
 
@@ -15,10 +16,12 @@ public class ShopController : Controller
 
     public IActionResult Index()
     {
-        var products = _context.Products.Include(x => x.ProductImages).ToList();
-
-        return View(products);
+        return View();
     }
-    
+
+    public IActionResult Filter(string search)
+    {
+        return ViewComponent("Shop", search);
+    }
     
 }

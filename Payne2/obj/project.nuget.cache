@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uJ7lizELPB4=",
+  "dgSpecHash": "ARMNK+qXPH0=",
   "success": true,
-  "projectFilePath": "/home/ulvirasulow/RiderProjects/Payne2/Payne2/Payne2.csproj",
+  "projectFilePath": "/home/ulvirasulow/Desktop/Payne/Payne2/Payne2.csproj",
   "expectedPackageFiles": [
     "/home/ulvirasulow/.nuget/packages/bouncycastle.cryptography/2.5.0/bouncycastle.cryptography.2.5.0.nupkg.sha512",
     "/home/ulvirasulow/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
