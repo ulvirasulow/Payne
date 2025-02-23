@@ -79,7 +79,7 @@
                                                     <a href="order-tracking.html">Track Order</a>
                                                 </li>
                                                 <li>
-                                                    <a href="wishlist.html">Wishlist</a>
+                                                    <a asp-action="WishList" asp-controller="Home">Wishlist</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -148,7 +148,7 @@
                                 </a>
                             </div>
                             <div class="toolbar-item">
-                                <a href="wishlist.html" class="toolbar-btn">
+                                <a asp-action="WishList" asp-controller="Home" class="toolbar-btn">
                                     <i class="flaticon-heart"></i>
                                 </a>
                             </div>
@@ -333,7 +333,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="wishlist.html">
+                                <a asp-action="WishList" asp-controller="Home">
                                     <i class="fa fa-angle-right"></i>
                                     <span>Wishlist</span>
                                 </a>
@@ -551,7 +551,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="wishlist.html">
+                                        <a asp-action="WishList" asp-controller="Home">
                                             <span class="mm-text">Wishlist</span>
                                         </a>
                                     </li>
@@ -600,7 +600,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="wishlist.html">
+                                <a >
                                     <span class="mm-text">Wishlist</span>
                                 </a>
                             </li>
@@ -837,6 +837,8 @@
         console.log(search)
         await FilterSearchTerm(search);
     })
+    
+    
 
 </script>
 </body>

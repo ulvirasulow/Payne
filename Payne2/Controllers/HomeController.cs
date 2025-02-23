@@ -17,10 +17,11 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        Response.Cookies.Append("0f3c6a5d-9974-43e3-b3ea-fab0976bb41e", "f5f45334-11d2-4aa0-9d11-be649315a017", new CookieOptions()
-        {
-            MaxAge = TimeSpan.FromHours(3)
-        });
+        Response.Cookies.Append("0f3c6a5d-9974-43e3-b3ea-fab0976bb41e", "f5f45334-11d2-4aa0-9d11-be649315a017",
+            new CookieOptions()
+            {
+                MaxAge = TimeSpan.FromHours(3)
+            });
 
         HttpContext.Session.SetString("ab107", "ey tepegoz");
 
@@ -71,6 +72,11 @@ public class HomeController : Controller
     }
 
     public IActionResult ContactUs()
+    {
+        return View();
+    }
+
+    public IActionResult WishList()
     {
         return View();
     }

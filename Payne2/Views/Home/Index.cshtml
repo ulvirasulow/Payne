@@ -96,8 +96,8 @@
             <div class="row mb--42">
                 <div class="col-lg-5 col-sm-10">
                     <h2 class="heading__secondary">NEW ARRIVALS</h2>
-                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor ipisci velit, sed quia non numquam
-                        eius modi </p>
+                    <p>Yeni Elave Edilmis Mehsullarimiz Asagidakilardir. <br>
+                        Sebete Elave Etmeye Telesin!</p>
                 </div>
             </div>
             <div class="row">
@@ -114,19 +114,11 @@
                                     <a asp-action="Detail" asp-controller="Home" asp-route-id="@item.Id"
                                        class="product-overlay"></a>
                                     <div class="product__action">
-                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                            <i class="fa fa-eye"></i>
-                                            <span class="sr-only">Quick View</span>
-                                        </a>
-                                        <a href="wishlist.html" class="action-btn">
+                                        <a asp-action="WishList" asp-controller="Home" class="action-btn">
                                             <i class="fa fa-heart-o"></i>
                                             <span class="sr-only">Add to wishlist</span>
                                         </a>
-                                        <a href="wishlist.html" class="action-btn">
-                                            <i class="fa fa-repeat"></i>
-                                            <span class="sr-only">Add To Compare</span>
-                                        </a>
-                                        <a data-product-id="@item.Id" class="add-basket">
+                                        <a data-product-id="@item.Id" class="action-btn add-basket">
                                             <i class="fa fa-shopping-cart"></i>
                                             <span class="sr-only">Add To Cart</span>
                                         </a>

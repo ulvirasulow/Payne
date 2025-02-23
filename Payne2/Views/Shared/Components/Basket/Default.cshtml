@@ -10,12 +10,13 @@
         <div class="mini-cart-inner">
             <h3 class="mini-cart__heading mb--45">Shopping Cart</h3>
             <div class="mini-cart__content">
-                <ul class="mini-cart__list">
+                <ul class="mini-cart__list" id="basket-list">
                     @foreach (var item in Model)
                     {
                         TotalPrice += item.Count * item.Price;
-                        <li class="mini-cart__product">
-                            <a asp-action="Index" asp-controller="Home" class="mini-cart__product-remove">
+                        <li class="mini-cart__product" data-id="@item.Id">
+                            <a href="#" class="mini-cart__product-remove">
+                                <i class="flaticon-cross"></i>
                             </a>
                             <div class="mini-cart__product-image">
                                 <img src="~/Upload/Product/@item.ImgUrl" alt="products">
@@ -30,7 +31,7 @@
                 </ul>
                 <div class="mini-cart__total">
                     <span>Subtotal</span>
-                    <span class="ammount">$@TotalPrice</span>
+                    <span class="ammount" id="subtotal">$@TotalPrice</span>
                 </div>
                 <div class="mini-cart__buttons">
                     <a asp-action="Index" asp-controller="Cart" class="btn btn-fullwidth btn-bg-primary mb--20">View
@@ -41,3 +42,63 @@
         </div>
     </div>
 </aside>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Basket məlumatlarını modeldən alırıq
+        const basket = [
+            @foreach (var item in Model)
+            {
+                @: { 
+            @:id: "@item.Id",
+            @:name: "@item.Name",
+            @:count: @item.Count,
+            @:price: @item.Price,
+                @:imgUrl: "@item.ImgUrl"
+            @:},
+            }
+        ];
+
+        // Basketi localStorage-da saxlayırıq
+        localStorage.setItem("basket", JSON.stringify(basket));
+        updateSubtotal();  // İlk yükləndikdə Subtotal-u yeniləyirik
+
+        // Silmə funksiyasını təyin edirik
+        const removeButtons = document.querySelectorAll(".mini-cart__product-remove");
+
+        removeButtons.forEach(button => {
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                const productItem = this.closest(".mini-cart__product");
+                const productId = productItem.getAttribute("data-id");
+
+                // localStorage-dan məhsulu silirik
+                let basket = JSON.parse(localStorage.getItem("basket"));
+                basket = basket.filter(item => item.id !== productId); // productId-ə əsasən silirik
+
+                // Yenilənmiş basketi localStorage-a yazırıq
+                localStorage.setItem("basket", JSON.stringify(basket));
+
+                // Məhsulu DOM-dan silirik
+                productItem.remove();
+
+                // Subtotal-u yeniləyirik
+                updateSubtotal();
+            });
+        });
+    });
+
+    // Subtotal-u yeniləyən funksiya
+    function updateSubtotal() {
+        const basket = JSON.parse(localStorage.getItem("basket")) || [];
+        let totalPrice = 0;
+
+        // Basketdəki bütün məhsulların qiymətlərini hesablamaq
+        basket.forEach(item => {
+            totalPrice += item.count * item.price;
+        });
+
+        // Subtotal-u yeniləyirik
+        document.getElementById("subtotal").textContent = "$" + totalPrice;
+    }
+
+</script>
